@@ -1,5 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const swaggerFile = require('./swagger.json')
+const swaggerUi = require("swagger-ui-express");
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const cors = require('cors');
@@ -39,7 +41,10 @@ app.use(hpp());
 // Registering routes
 app.use('/', userRoute); // User routes
 app.use('/', employee); // Employee routes
-
+//swagger
+app.use("/documentation", swaggerUi.serve, swaggerUi.setup(swaggerFile, false, {
+    docExpansion: "none"
+}))
 // Create server
 app.listen(port, () => {
     console.log(`App running on port ${port}.`);

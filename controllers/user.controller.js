@@ -4,6 +4,8 @@ const jwt = require('jsonwebtoken');
 const db = require('../models/db');
 
 exports.createUser = async (req, res) => {
+    // #swagger.tags = ['User']
+    // #swagger.description = 'Endpoint to register a new admin user'
     try {
         const {
             email,
@@ -58,6 +60,8 @@ exports.createUser = async (req, res) => {
 
 //login
 exports.login = async (req, res) => {
+    // #swagger.tags = ['User']
+    // #swagger.description = 'Endpoint to login an admin'
     try {
         const {
             email,

@@ -16,6 +16,8 @@ const employeeSchema = Joi.object({
 
 // Route for adding an employee
 exports.addEmployee = async (req, res) => {
+    // #swagger.tags = ['Employee']
+    // #swagger.description = 'Endpoint to add a new employee'
     try {
         // Validate the request body against the schema
         const {
@@ -54,6 +56,7 @@ exports.addEmployee = async (req, res) => {
 
         await db.query(query, values);
         res.status(201).json({
+            success: true,
             message: 'Employee added successfully'
         });
     } catch (error) {
@@ -66,6 +69,8 @@ exports.addEmployee = async (req, res) => {
 
 //getting all employees
 exports.getAllEmployees = async (req, res) => {
+    // #swagger.tags = ['Employee']
+    // #swagger.description = 'Endpoint to get all employees'
     try {
         const employees = await db.query('SELECT * FROM employees');
         res.status(200).json({
